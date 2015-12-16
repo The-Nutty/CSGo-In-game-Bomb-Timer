@@ -31,14 +31,7 @@ public class Overlay implements IGameState, Runnable {
 		new Overlay();
 
 	}
-
-	public static Double getSize(String Text) {
-		JLabel l = new JLabel(Text);
-		l.setSize(l.getPreferredSize());
-		return l.getSize().getWidth();
-
-	}
-
+	
 	@Override
 	public void OnGameStateRecived(String GameState) {
 		JSONObject Game = new JSONObject(GameState);
