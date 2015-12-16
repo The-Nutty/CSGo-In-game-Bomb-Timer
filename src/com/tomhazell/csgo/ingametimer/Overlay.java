@@ -75,7 +75,7 @@ public class Overlay implements IGameState, Runnable {
 		timer.setHorizontalAlignment(JLabel.CENTER);
 		timer.setVerticalAlignment(JLabel.TOP);
 
-		timer.setFont(Font.createFont(Font.TRUETYPE_FONT, new File("font/Black.ttf")).deriveFont(30.0f));
+		timer.setFont(Font.createFont(Font.TRUETYPE_FONT, this.getClass().getResourceAsStream("/resources/Stratum2-Black.ttf")).deriveFont(30.0f));
 		
 		timer.setForeground(Color.RED);
 		timer.setBorder(new EmptyBorder(2, 4, 0, 0));
