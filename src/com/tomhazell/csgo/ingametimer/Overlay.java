@@ -8,6 +8,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,7 +39,7 @@ public class Overlay implements IGameState, Runnable {
 		JSONObject round = (JSONObject) Game.get("round");
 		String BombState = round.getString("bomb");
 		
-
+		
 		if (BombState.equals("exploded")) {
 			BombTimer = -1;
 		}
@@ -55,11 +56,15 @@ public class Overlay implements IGameState, Runnable {
 	}
 
 	Overlay() throws IOException, FontFormatException {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Double width = screenSize.getWidth();
+		Double height = screenSize.getHeight();
+		
 		JFrame frame = new JFrame("Transparent Window");
 		frame.setUndecorated(true);
 		frame.setBackground(new Color(0, 0, 0, 0));
-		frame.setSize(1920, 1080);
-		frame.setPreferredSize(new Dimension(1920, 1080));
+		frame.setSize(width.intValue(), height.intValue());
+		frame.setPreferredSize(new Dimension(width.intValue(), height.intValue()));
 		frame.setAlwaysOnTop(true);
 
 		frame.getRootPane().putClientProperty("apple.awt.draggableWindowBackground", false);
@@ -70,7 +75,7 @@ public class Overlay implements IGameState, Runnable {
 		timer.setHorizontalAlignment(JLabel.CENTER);
 		timer.setVerticalAlignment(JLabel.TOP);
 
-		timer.setFont(Font.createFont(Font.TRUETYPE_FONT, new File("/font/Black.ttf")).deriveFont(30.0f));
+		timer.setFont(Font.createFont(Font.TRUETYPE_FONT, new File("font/Black.ttf")).deriveFont(30.0f));
 		
 		timer.setForeground(Color.RED);
 		timer.setBorder(new EmptyBorder(2, 4, 0, 0));
