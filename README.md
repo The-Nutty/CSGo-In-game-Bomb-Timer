@@ -5,6 +5,8 @@ To download either build in eclipse or download for releases(when ready).
 
 Screen shot from in game: http://imgur.com/o7vxbly
 
+I am taking ANY recomendations for the visual look as i know its not ideal ATM
+
 How to install:
 
 0.5. make sure java is installed
