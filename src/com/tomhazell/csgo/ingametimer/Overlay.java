@@ -17,6 +17,7 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -55,7 +56,8 @@ public class Overlay implements IGameState, Runnable {
 		
 	}
 
-	Overlay() throws IOException, FontFormatException {
+	Overlay() {
+		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Double width = screenSize.getWidth();
 		Double height = screenSize.getHeight();
@@ -75,7 +77,15 @@ public class Overlay implements IGameState, Runnable {
 		timer.setHorizontalAlignment(JLabel.CENTER);
 		timer.setVerticalAlignment(JLabel.TOP);
 
-		timer.setFont(Font.createFont(Font.TRUETYPE_FONT, this.getClass().getResourceAsStream("/resources/Stratum2-Black.ttf")).deriveFont(30.0f));
+		try {
+			timer.setFont(Font.createFont(Font.TRUETYPE_FONT, this.getClass().getResourceAsStream("/resources/Stratum2-Black.ttf")).deriveFont(30.0f));
+		} catch (IOException e1) {
+			errorBox("Have you modifyed the font? it cant be found. Full error: " + e1.toString());
+			System.exit(0);
+		} catch (FontFormatException e) {
+			errorBox("Have you modifyed the font? Its the wrong format. Full error: " + e.toString());
+			System.exit(0);
+		}
 		
 		timer.setForeground(Color.RED);
 		timer.setBorder(new EmptyBorder(2, 4, 0, 0));
@@ -85,9 +95,16 @@ public class Overlay implements IGameState, Runnable {
 		frame.pack();
 
 		GameStateChangeLisener state = new GameStateChangeLisener(this);
-		state.Start();
+		try {
+			state.Start();
+		} catch (IOException e) {
+			errorBox("IO Exeption, have you ran this twice? full error: " + e.toString());
+			System.exit(0);
+		}
 		
 	}
+	
+	
 
 	@Override
 	public void run() {
@@ -103,4 +120,9 @@ public class Overlay implements IGameState, Runnable {
 		}
 		timer.setText("");
 	}
+	
+	public static void errorBox(String Message)
+    {
+        JOptionPane.showMessageDialog(null, Message, "ERROR", JOptionPane.INFORMATION_MESSAGE);
+    }
 }
