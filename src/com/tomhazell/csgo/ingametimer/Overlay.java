@@ -2,24 +2,16 @@ package com.tomhazell.csgo.ingametimer;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.FontFormatException;
-import java.awt.GridLayout;
 import java.awt.Toolkit;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
-import javax.swing.Box;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import org.json.JSONObject;
@@ -63,6 +55,7 @@ public class Overlay implements IGameState, Runnable {
 		Double height = screenSize.getHeight();
 		
 		JFrame frame = new JFrame("Transparent Window");
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setUndecorated(true);
 		frame.setBackground(new Color(0, 0, 0, 0));
 		frame.setSize(width.intValue(), height.intValue());
