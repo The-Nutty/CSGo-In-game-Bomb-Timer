@@ -102,7 +102,12 @@ public class Overlay implements IGameState, Runnable {
 	@Override
 	public void run() {
 		while (BombTimer > -1) {
-			timer.setText(Integer.toString(BombTimer));
+			if(BombTimer < 10){
+				timer.setText("0:0" + Integer.toString(BombTimer));
+			}else{
+				timer.setText("0:" + Integer.toString(BombTimer));
+			}
+			
 			
 			try {
 				Thread.sleep(1000);
