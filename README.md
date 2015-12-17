@@ -13,7 +13,5 @@ It genarates a Jframe thats the size of a 1080p monitor and cant be clicked and 
 Thanks to https://github.com/LangdalP/GoTimer for the insperation.
 
 FAQ:
-A:its not working Q: open console in csgo dose it say "Loading Game State Integration: gamestate_integration_CSGOTimer.cfg" if not make sure you have placed the config in the corect place. otherwise check for a pop up you might have not seen.
-
-
-TODO: Clean Catch/throw clauses
+Q:its not working A: open console in csgo dose it say "Loading Game State Integration: gamestate_integration_CSGOTimer.cfg" if not make sure you have placed the config in the corect place. otherwise check for a pop up you might have not seen.
+Q: Is this not basicly a coustom hud? can this be used to make one. A: YES!!!1! yeah basicly this could be used by disableing ingame hud and using this method. However currently you cant get the state of other players without being a spectator. So a specator HUD is very posible. Not so much a regular one.
