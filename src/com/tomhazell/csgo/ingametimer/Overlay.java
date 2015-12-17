@@ -29,7 +29,7 @@ public class Overlay implements IGameState, Runnable {
 	JLabel timer;
 	int BombTimer = -1;
 
-	public static void main(String[] args) throws IOException, FontFormatException {
+	public static void main(String[] args){
 		new Overlay();
 
 	}
